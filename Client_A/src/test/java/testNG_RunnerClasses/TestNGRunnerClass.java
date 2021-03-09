@@ -7,7 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 		
 		features = "src/test/resources/Features",
-		glue={"com.stepGeneratorClasses"}
+		glue={"com.stepGeneratorClasses"},
+		tags= {"@t2"}
 		
 		)
 @Test
