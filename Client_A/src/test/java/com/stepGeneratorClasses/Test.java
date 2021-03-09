@@ -1,5 +1,4 @@
 package com.stepGeneratorClasses;
-
 import java.util.HashMap;
 
 import io.cucumber.java.en.Given;
@@ -15,24 +14,23 @@ public class Test {
 	@Given("^Send Request to the link$")
 	public void open_Browser() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		response=RestAssured.get("https://api.ratesapi.io/api/latest?symbols=USD,GBP");
+		response=RestAssured.get("https://api.ratesapi.io/api/latest?symbols=USD");
 	}
-	
 	@When("^Response is received$")
 	public void email_asked() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		resC=response.getStatusCode();
-		response.prettyPrint();
 		System.out.println("Status Code: "+resC);
-	}
-	
+		response.prettyPrint();
+	}	
 	@Then("^Validate the response$")
 	public void enter_the_Email() throws Throwable {	
 		// Write code here that turns the phrase above into concrete actions
 		if(resC==200) {
-			System.out.println("Response is received");
+			System.out.println("Positive Response received");
 			JsonPath jsonPathEvaluator = response.jsonPath();
 			HashMap<String, Integer> name = jsonPathEvaluator.get("rates");
+			//Here we are validating when we pass USD as argument the correct response is getting or not
 			if(name.containsKey("USD")) {
 				System.out.println("Correct response Received");
 				System.out.println(name.get("USD"));
@@ -42,7 +40,7 @@ public class Test {
 			}
 		}
 		else {
-		System.out.println("Some error occur No Response");
+		System.out.println("Some error occur Negative Response received");
 		}	
 	}
 }
