@@ -10,7 +10,7 @@ import io.restassured.response.Response;
 
 public class Test {
 	Response response;
-	int resC;
+	int resC=0;
 	@Given("^Send Request to the link$")
 	public void open_Browser() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
