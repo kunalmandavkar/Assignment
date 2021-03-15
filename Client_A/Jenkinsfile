@@ -8,7 +8,7 @@ pipeline{
 	stages{
 		stage('Bulid'){
 			steps{
-				git 'https://github.com/kunalmandavkar/Assignment.git'
+				git 'https://github.com/kunalmandavkar/Assignment'
 				
 				
 				bat "mvn -Dmaven.test.failure.ignore=true clean package"
